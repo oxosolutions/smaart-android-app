@@ -1,0 +1,67 @@
+<ion-view view-title="Login" style="background: url('img/background_img_1.jpg'); background-position: 0px -100px;">
+   <style type="text/css">
+        ion-content > .scroll{
+            height: 100%
+        }       
+   </style>
+
+    <ion-content>
+       <!--  <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>       -->  
+      <!--   <div class="logoDiv">
+            <img src="img/icon.png" class="loginLogo" />
+            
+        </div> -->
+        <div flex="100" layout="row" layout-align="center center" style="    padding: 20% 5% 0 5%;font-size: 30px;text-align: center;line-height: 1.7;color: white;">
+            <!-- <img src="img/icon.png"> -->
+            
+            {{application_title}}
+        </div>
+        <div flex="100" layout="row" layout-align="center center" style="    padding:0 5% 20% 5%;font-size: 20px;text-align: center;line-height: 1.7;color: white;">
+            <!-- <img src="img/icon.png"> -->
+
+            {{application_description}}
+        </div>
+        
+        <div >
+              <div class="list list-inset loginDiv" ng-style="{'margin-top':'20%'}">
+            <label class="item item-input loginLabel" style="background-color: white !important;margin: 10px">
+                <input type="text" placeholder="Email Address" name="email" ng-model="data.email" style="color: #666 !important">
+            </label>
+            <!-- <md-input-container class="md-block">
+                <label>Username or Email</label>
+                <input name="email" required type="email" name="clientEmail" ng-model="data.email"
+                   minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Password</label>
+                <input name="password" required type="password" name="clientEmail" ng-model="data.password"
+                   minlength="10" maxlength="100" />
+            </md-input-container> -->
+            <label class="item item-input loginLabelPass" style="background-color: white !important;margin: 10px">
+                <input type="password" placeholder="Password" name="password" ng-model="data.password" style="color: #666 !important">
+            </label>
+        </div>
+        <button class="button button-positive button-block" style="width:90%; margin: 0 auto; margin-top: 2%;" ng-click="doLogin()">Login</button>
+        <div style="margin-top: 30px;text-align: center;color: white">If you do not have a user account?</div>
+        <a href="" style="    margin-bottom: 30px;
+            padding: 0px;
+            border: 0px;
+            font-variant-numeric: inherit;
+            font-weight: 700;
+            font-stretch: inherit;
+            font-size: medium;
+            line-height: 1.8;
+            font-family: Roboto,sans-serif;
+            vertical-align: baseline;
+            color: rgb(22,141,197);
+            text-decoration-line: none;
+            text-align: center;
+            display: inline;text-align: center;display: block" ng-click="registerLink()">Signup Here</a>
+        </div>
+    
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,118 @@
+<style type="text/css">
+
+
+/*
+.aione-wrapper{
+	background-color: #ffffff;
+	margin: 0;
+	padding: 10% 6%;
+	height: 100%;
+	position: relative;
+	z-index: 9999;
+}
+ion-content:before{
+	content:"";
+	border: 1px solid #168dc5;
+	position: absolute;
+	top: 6%;
+	right: 6%;
+	bottom: 6%;
+	left: 6%;
+	z-index: -1;
+}
+*/
+
+ion-content > .scroll{
+	height: 100%;
+	
+}
+
+ion-content{
+	background-color: #f8f8f8;
+}
+
+.aione-title{
+    font-size: 2em;
+    text-align: center;
+    line-height: 1.6;
+    color: #168dc5;
+}
+.aione-description{
+	font-size: 1.3em;
+	font-weight:300;
+	text-align: center;
+	line-height: 1.5;
+	color: #666666;
+}
+.aione-button{
+	background-color:#168dc5;
+	color: #ffffff;
+	font-size: 1.5em;
+	font-weight:300;
+	text-align:center;
+	text-decoration: none; 
+	text-transform: uppercase;
+	display:block;
+	line-height: 40px;
+	padding: 0 20px
+	width:100%;
+}
+.field input[type=date], 
+.field input[type=email], 
+.field input[type=number], 
+.field input[type=password], 
+.field input[type=password],
+.field input[type=number], 
+.field input[type=tel], 
+.field input[type=text], 
+.field input[type=time], 
+.field input[type=url], 
+.field select, 
+.field select[multiple=multiple], 
+select, 
+textarea {
+    font-size: 1.3em;
+    line-height: 28px;
+    font-weight: 400;
+    width: 100%;
+    min-height: 40px;
+    padding: 0;
+    margin: 0;
+    text-indent: 0;
+    color: #747474 ;
+    background-color: #faf8f7;
+    border: 1px solid #e8e8e8;
+    outline: 0;
+    text-shadow: none;
+    box-shadow: none;
+    font-family: "Open Sans",Arial,Helvetica,sans-serif;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.field input[type=text]{
+	color:#747474 !important;
+	text-align: center;
+}
+
+</style>
+
+<ion-content>
+
+		<div layout="row" layout-align="center center">
+          <div>
+            <h1 class="aione-title">Activate Application</h1>
+            <h3 class="aione-description">Put the activation code in the input field below and press Activate button.</h3>
+            <div class="field">
+    			  	<input type="text" placeholder="Enter activation code" ng-model="activation.code">
+    			  </div>
+    			  <div class="field">
+    			    <a href="javascript:void(0)" class="aione-button" ng-click="Activate()">Activate</a>
+    			  </div>
+  			  </div>
+  		</div>
+
+</ion-content>

@@ -1,0 +1,159 @@
+<ion-view view-title="{{page.title}}" class="main_row" >
+<!-- 	<ion-nav-bar class="bar-stable bar-positive">
+	  		<button class="button button-icon button-clear ion-navicon" menu-toggle="right" ></button>
+	</ion-nav-bar> -->
+	<ion-nav-bar class="bar-stable bar-positive">
+		<div style="float: right !important; padding-right: 3%; z-index: 99999 !important; position: absolute; right: 0;">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="right" style="color:#FFF !important; float: right; font-size: 30px;"></button>
+		</div>
+	</ion-nav-bar>
+	   <div class="bar bar-subheader" style="background-color: #e8e8e8;">
+	 	<div style="width: 100%;text-align: center;line-height: 32px;">Completed Survey List </div>
+	</div>
+	  <style type="text/css">
+  	.main_row{
+  		background:none;
+  	}
+  	.aione-table table {
+  border: 1px solid #e8e8e8
+}
+.aione-table thead {
+  padding: 0;
+  margin: 0;
+  border: none
+}
+.aione-table table > thead > tr {
+  border-bottom: 1px solid #e8e8e8
+}
+.aione-table table > thead > tr > th {
+  font-weight: 700;
+  border-right: 1px solid #e8e8e8
+}
+.aione-table table > thead > tr > th:last-child {
+  border-right: none
+}
+.aione-table table > tbody > tr {
+  border-bottom: 1px solid #e8e8e8
+}
+.aione-table table > tbody > tr:hover {
+  background-color: #f2f2f2
+}
+.aione-table table > tbody > tr:last-child {
+  border-bottom: none
+}
+.aione-table table > tbody > tr:nth-child(odd) {
+  background-color: #f8f8f8
+}
+.aione-table table > tbody > tr:nth-child(even) {
+  background-color: #fff
+}
+.aione-table table > tbody > tr:hover:nth-child(odd) {
+  background-color: #f2f2f2
+}
+.aione-table table > tbody > tr:hover:nth-child(even) {
+  background-color: #f2f2f2
+}
+.aione-table table > tbody > tr > td {
+  border-right: 1px solid #e8e8e8
+}
+.aione-table table > tbody > tr > td:last-child {
+  border-right: none
+}
+.aione-table table.wide{
+	width: 100%
+}
+.aione-table table.wide > tbody > tr > td,
+.aione-table table.wide > thead > tr > th {
+  padding: 20px 10px
+}
+.tabs{
+	bottom: 44px;
+	height: 60px;
+	padding: 10px;
+
+}
+button{
+	width: 100%;
+	background-color: #387EF5;
+	color: white;
+	border:none;
+	border-radius: 3px
+}
+.active{
+	    border: 2px solid #387EF5;
+	        border-bottom: 2px solid #387EF5 !important;
+}
+  </style>
+  <ion-content class="surveyPage has-subheader" style="background-color: white">
+    <ng-include src="'templates/testmode.html'" ng-show="checkAppMode()" ng-controller="settingsCTRL"></ng-include>
+<!-- 	<div class="row" style="margin-top:-8%;">
+		<div class="col">
+			
+			<div class="row">
+				<div class="col question_div">
+					<div class="qus_head">
+						<p>Completed Survey List</p>
+					</div>
+						<div class="list">
+							<label class="item item-input item-select">
+							    <div class="input-label drop" style="width: 100%;max-width: 100%;z-index: 999999;">
+									Select Survey
+							    </div>
+							    <select ng-change="surveyChange()" name="surveySelect" ng-model="$parent.surveySelect">
+							      	<option ng-repeat="(key, value) in list" value="{{key}}">{{value}}</option>
+							    </select>
+							</label>
+						</div>
+					<div class="qus_footer">
+						
+					</div>
+				</div>
+			</div>
+			<div class="list list-inset">
+
+			    <div class="item" ng-repeat="(key, value) in PendingSurvey">
+			      <label style="float:left;">{{(value.incomplete_name != null && value.incomplete_name != '')?value.incomplete_name:value.survey_started_on}}</label>
+			      <i class="icon ion-ios-information-outline" style="float:right !important; font-size:20px; color:red;" ng-show="{{value.exportNo}}"></i>
+			      <i class="icon ion-checkmark" style="float:right !important; font-size:20px; color:green;" ng-show="{{value.exportYes}}"></i>
+			    </div>
+
+			</div>
+			<a class="button button-block button-assertive" href="javascript:;" ng-click="exportSurv()">
+			  Sync Survey Result
+			</a>
+		</div>
+	</div> -->
+	<div class="aione-table" >  
+		<table class="wide">
+	        <thead>
+	            <tr>
+	                <th>Survey title</th>
+	                <th>Total questions</th>
+	                <th>Synced records</th>
+	                <th>Un-synced records</th>
+	            </tr>
+	        </thead>
+
+	        <tbody>
+	            <tr on-tap="onTap(surveyDetails.survey.survey_id,$event)" ng-repeat="surveyDetails in list">
+					<td>{{surveyDetails.survey.name}}</td>
+					<td style="text-align: center;" ng-init="getQuestionCounts(surveyDetails.survey.survey_id)">{{surveyData.questionCount[surveyDetails.survey.survey_id]}}</td>
+					<td style="text-align: center;color: green">{{surveyDetails.result.synced}}</td>
+					<td style="text-align: center;color: red">{{surveyDetails.result.unsynced}}</td>
+	            </tr>         
+	           
+	        </tbody>
+	    </table>  
+	</div>
+  </ion-content>
+  <div class="tabs">
+  	<button ng-click="exportSurv()">Synchronize Records</button>
+  </div>
+  <div ng-include="'templates/footer.html'">
+		
+	</div>
+</ion-view>
+
+
+
+	

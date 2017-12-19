@@ -1,0 +1,168 @@
+<ion-view view-title="{{page.title}}" class="main_row" ng-controller="surveyLoad">
+	 <ion-nav-bar class="bar-stable bar-positive"></ion-nav-bar>
+	 <div class="bar bar-subheader" style="background-color: #e8e8e8;">
+	 	<div style="width: 100%;text-align: center;line-height: 32px;overflow: hidden;text-overflow: ellipsis;">{{surveyName}} -- {{section_name}}</div>
+	</div>
+  <ion-content class="surveyPage has-subheader">
+    <ng-include src="'templates/testmode.html'" ng-show="checkAppMode()" ng-controller="settingsCTRL"></ng-include>
+  	<style type="text/css">
+  		.qus_head{
+
+  		}
+  		span[description=DescHtml] > p{
+  			    padding: 0px 15px;
+  			    margin-bottom: 0
+  		}
+  	</style>
+    <div class="row" ng-if="quest_type === 'repeater'">
+        <div class="col">
+            <div class="textBoxSurvey" style="margin-bottom: 2%;">
+                <div class="row">
+                    <div class="col question_div">
+                        <h4 class="para">How many vehicles involved in crash?</h4>
+                        <input type="number" name="number_of_vehicle" value="" class="numberAnswer" ng-pattern="onlyNumbers" style="width: 95%; margin-left:2%;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	<div class="row" ng-show="{{showHideQuestion}}">
+
+		<div class="col">
+ 		    <div class="row">
+				<div class="col question_div">
+					<div ng-if="quest_type === undefined">
+						<div class="qus_head">
+							<p>Question:  {{currentQst}}/<span>{{totalQst}}</span><span style="float: right;">{{iris_id}}</span></p>
+
+						</div>
+							<h4 class="para"><span question="QuesHtml"></span> </h4>
+							<span description="DescHtml"></span>
+						<div class="qus_footer">
+							<!-- <p>Maxime quis.</p> -->
+
+						</div>
+					</div>
+
+					<div answers="AnswerHtml" style="padding: 5px 10px;">
+							
+					</div>
+				</div>
+			</div>
+
+			
+			<div class="row" ng-if="quest_type === 'repeater'">
+                <div class="col">
+                    <div class="textBoxSurvey" style="margin-bottom: 2%;">
+                        <div class="row">
+                            <div class="col question_div">
+                                <h4 class="para">Would you like to submit this section?</h4>
+                                <ul style="margin-left: 3%;">
+                                    <li style="margin-bottom: 3%;">
+                                        <label>
+                                            <input type="radio" value="yes" name="submit_section" /> Yes
+                                        </label>
+                                    </li>
+                                    <li style="margin-bottom: 3%;">
+                                        <label>
+                                            <input type="radio" value="no" name="submit_section" /> No
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+					
+			
+
+			<div class="row" style="margin-bottom: 55px">
+				<div class="col button_div">
+					<div class="button_wrapper previous">
+						<a id="button_previous" class="button button-previous" href="" ng-click="goToPrev()" ng-controller="prevQuest"><span>Previous</span></a>
+					</div>
+					<div class="button_wrapper stop">
+						<!-- <a id="button_stop" class="button button-stop" href="" ng-click="StopSurvey()" ng-controller="stopSurvey"><span>Stop</span></a> -->
+						<a id="button_stop" class="button button-stop" href="" ng-click="StopSurvey()" ng-controller="stopSurvey"><span>Exit</span></a>
+					</div>
+					<div class="button_wrapper next">
+						<a id="button_next" class="button button-next" href="" ng-click="QuestNext(questionId)" ng-controller="nextQuest"><span>Next</span></a>
+					</div>
+
+					<!--<ul>
+						<li><a href=""><img src="../img/next.png" style="width:70px;float:right" alt="next" ng-controller="nextQuest" ng-click="QuestNext()"></a></li>
+						<center><li><button style="align:center">Stop</button></li></center>
+						<li><a href=""><img src="../img/pre.png" style="width:70px;float:left" alt="previous" ></a></li>
+					</ul>
+					-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="row">
+    	<div class="col survey_question">
+			<div class="question">
+				<p style="border-bottom:2px solid white;"><strong style="float:left;">Q:&nbsp;</strong>
+					<span question="QuesHtml"></span> 
+				</p><br>
+				
+				<span description="DescHtml" style="font-style: italic;"></span>
+				
+			</div>
+    	</div>
+    </div>
+    <div class="row">
+		<div class="col">
+			<div image="imageHtml">
+				
+			</div>
+		</div>
+    </div><br>
+    <div class="row">
+		<div class="col">
+			<h4>Option:</h4>
+			<form action="" class="ans_form">
+				<div answers="AnswerHtml">
+					
+				</div>
+				<ul class="ans_ul">
+					<li><label for=""><input type="radio" class="rad_ans" name="answer"> pharetra ornare dolor vel</label><br></li>
+					<li><label for=""><input type="radio" class="rad_ans" name="answer"> pharetra ornare dolor vel</label><br></li>
+					<li><label for=""><input type="radio" class="rad_ans" name="answer"> pharetra ornare dolor vel</label><br></li>
+					<li><label for=""><input type="radio" class="rad_ans" name="answer"> pharetra ornare dolor vel</label><br></li>
+				</ul>
+				<div class="row nextButs">
+					<div class="col">
+						<button class="button button-balanced">
+						  Prev
+						</button>
+
+						<button class="button button-assertive">
+						  Stop
+						</button>
+
+						<button class="button button-balanced" ng-controller="nextQuest" ng-click="QuestNext()">
+						  Next
+						</button>	
+					</div>
+				</div>
+			</form>
+		</div>
+    </div> -->
+  </ion-content>
+  	<div ng-include="'templates/footer.html'">
+		
+	</div>
+</ion-view>

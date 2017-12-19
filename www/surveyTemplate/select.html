@@ -1,0 +1,26 @@
+<style type="text/css">
+	.drop{
+		width: 100%;
+		max-width: 100%;
+		z-index: 999999;
+	}
+</style>
+<div class="row">
+	<div class="col question_div">
+	
+		
+		<label class="item item-input item-select">
+		    <div class="input-label drop">
+		      Please Select
+		    </div>
+		    <select name="selectAnswer" class="app_select" ng-model="selectAnswer.value" class="selectAnswer" id="{{questId}}" ng-change="setNextQuestion(option.option_next,'select')">
+		    	<option ng-repeat="option in $parent.selectOptions" next="{{option.option_next}}" value="{{option.option_value}}">{{option.option_text}}</option>
+			</select>
+		</label>
+
+
+		<div class="ans_footer">
+			<!-- <p>Maxime quis.</p> -->
+		</div>
+	</div>
+</div>

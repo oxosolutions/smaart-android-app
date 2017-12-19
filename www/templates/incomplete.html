@@ -1,0 +1,55 @@
+<ion-view view-title="In-Complete Survey List" class="main_row" >
+	
+  <ion-nav-bar class="bar-stable bar-positive">
+		<div style="float: right !important; padding-right: 3%; z-index: 99999 !important; position: absolute; right: 0;">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="right" style="color:#FFF !important; float: right; font-size: 30px;"></button>
+		</div>
+	</ion-nav-bar>
+   <div class="bar bar-subheader" style="background-color: #e8e8e8;">
+	 	<div style="width: 100%;text-align: center;line-height: 32px;">{{page.title}}</div>
+	</div>
+  <ion-content class="surveyPage has-subheader" style="margin-top:4%;">
+    <ng-include src="'templates/testmode.html'" ng-show="checkAppMode()" ng-controller="settingsCTRL"></ng-include>
+	<div class="row" style="margin-top:-8%;">
+		<div class="col">
+			
+			<!-- <div class="row">
+				<div class="col question_div">
+					<div class="qus_head">
+						<p>Incomplete Survey List</span></p>
+					</div>
+						<div class="list">
+
+							  <label class="item item-input item-select">
+							    <div class="input-label drop" style="width: 100%;max-width: 100%;z-index: 999999;">
+							      Select Survey
+							    </div>
+							    <select ng-change="surveyChange()" name="surveySelect" ng-model="$parent.surveySelect">
+							      <option layout="row" ng-repeat="(key, value) in list" value="{{key}}"	layout-align="center stretch"> {{value}}</option>
+							    </select>
+							  </label>
+
+						</div>
+					<div class="qus_footer">
+						
+					</div>
+				</div>
+			</div> -->
+			<div class="list list-inset">
+			    <div class="item" ng-repeat="(key, value) in PendingSurvey" ng-click="continue(value.id)">
+			      <label style="float:left;">{{(value.incomplete_name != null)?value.incomplete_name:value.survey_started_on}}</label>
+			      <i class="icon ion-chatbubble-working" style="float:right !important; font-size:20px;"></i>
+			    </div>
+
+			</div>
+		</div>
+	</div>
+
+	
+
+
+  </ion-content>
+  <div ng-include="'templates/footer.html'">
+		
+	</div>
+</ion-view>

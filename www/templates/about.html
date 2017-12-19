@@ -1,0 +1,25 @@
+<ion-view view-title="{{page.title}}" class="main_row" ng-controller="about">
+	<ion-nav-bar class="bar-stable bar-positive" style="position:fixed; width:100%; padding-bottom:2%;">
+  	<button class="button button-icon button-clear ion-navicon" menu-toggle="right" style="color:#FFF !important; float: right; font-size: 30px; z-index:999;"></button>
+  </ion-nav-bar>
+    <div class="bar bar-subheader" style="background-color: #e8e8e8;">
+	 	<div style="width: 100%;text-align: center;line-height: 32px;overflow: hidden;text-overflow: ellipsis;">About</div>
+	</div>
+	<style type="text/css">
+		ion-content .scroll{
+			height: calc(100% - 44px);
+			padding: 2%
+		}
+	</style>
+  <ion-content class="surveyPage has-subheader">
+    <ng-include src="'templates/testmode.html'" ng-show="checkAppMode()" ng-controller="settingsCTRL"></ng-include>
+  
+	
+	<div dynamic="about_page_content"></div>
+	
+
+  </ion-content>
+  	<div ng-include="'templates/footer.html'">
+		
+	</div>
+</ion-view>

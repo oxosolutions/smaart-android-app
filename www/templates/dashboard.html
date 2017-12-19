@@ -1,0 +1,135 @@
+<ion-view hide-nav-bar="true" view-title="Dashboard" style="background: url('img/dashboard.jpg');">
+	
+  <ion-content class="homeBack has-footer">
+    <ng-include src="'templates/testmode.html'" ng-show="checkAppMode()" ng-controller="settingsCTRL"></ng-include>
+	<div class="row responsive-lg">
+		<div style="float: right !important; padding-right: 3%;">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="right" style="color:#FFF !important; float: right; font-size: 30px;"></button>
+		</div>
+		<div style="text-align:center;">
+			<!-- <img src="img/icon.png" style="width:20%;max-width:25%" /> -->
+			<h3 style="color:#FFF;">Welcome {{name}}</h3>
+			<div style="color: white;font-size: 16px">{{description}}</div>
+		</div>
+		<div class="row" style="margin-top: 30px">
+			<div layout="row" layout-wrap layout-align="center stretch" style="width: 100%">
+				<div flex="100" class="btn-big orange" ng-click="openList()" style="margin-bottom: 10px">
+		        	<i class="fa fa-bar-chart fa-2x"></i>
+		        	<span class="label bottom">{{start_survey_button_text}}</span> 
+		        </div>
+		        <style type="text/css">
+		        	.btn-big span{
+		        		font-size:16px;
+		        	}
+		        	.main-dashboard-div > div{
+		        		width: 50%;
+		        		float: left;
+		        	}
+		        	div[class^="btn"]{
+		        		line-height: 76px;
+		        		/*margin:0px 7px 20px 0;*/
+		        	}
+		        	.bottom {
+					    bottom: 15px;
+						
+					}
+					.label{
+						left: 0px 
+					}
+					.btn-big span{
+						width: 100%;
+						text-align: center;
+					}
+					.close-icon{
+						background-color: #D20D0D;
+					    width: 20px;
+					    line-height: 24px;
+					    border-radius: 50%;
+					}
+					.color-heading{
+						color: white
+					}
+		        </style>
+		       
+		        	<div flex="100" style="margin-bottom: 10px">
+		        		<a href="#/app/surveylist" >
+		        			<div class="btn-big orange" ng-click="goToSurvey()" style="background:#418bca">
+					        	<i class="fa fa-list fa-2x"></i>
+					        	<span class="label bottom">{{link_to_manage_survey_text}}</span> 
+					        </div>
+				        </a>
+		        	</div>
+		        
+		      
+		        	<div flex="100" style="margin-bottom: 10px">
+		        		<a href="#/app/completed">
+			        		<div class="btn-big orange" ng-click="goToSurvey()" style="background:#5db85b">
+					        	<div style="color: white;text-align: center"><i class="fa fa-upload fa-2x"></i></div
+					        	>
+					        	<span class="label bottom">{{link_to_sync_survey_text}}</span> 
+					        </div>
+				        </a>
+		        	</div>
+		        	<div flex="100" style="margin-bottom: 10px">
+		        		<a href="#/app/reactivate" >
+			        		<div class="btn-big orange" ng-click="goToSurvey()" style="background:#93a2bf">
+					        	<i class="fa fa-refresh fa-2x"></i>
+					        	<span class="label bottom">{{link_to_update_app_text}}</span> 
+					        </div>
+				        </a>
+		        	</div>
+		        
+
+			</div>
+	        
+        </div>
+	</div>		
+<script id="suvlist.html" type="text/ng-template" ng-controller="dashboardCtrl">
+  <ion-modal-view>
+    <ion-header-bar>
+    	<div class="bar bar-header bar-positive" style="text-align: center;padding:0px 10px" layout="row" layout-align="space-between center">
+    		<h4 class="color-heading">List of All survey</h4>
+    		<a href="" style="float: right !important; color: #FFF;" ng-click="closeModal()"><div class="close-icon"><i class=" icon ion-close"></i></div></a>
+    	</div>
+    </ion-header-bar>
+    <ion-content>
+      <div >
+      
+          <div ng-repeat="list in surveyList" ng-click="startSurvey(list.survey_id)" style="border-bottom: 1px solid grey">
+            <!-- {{list.name}} -->
+            <div class="row" style="color:  #2F5F5F;"> 
+	        
+	        	<div class="col" >
+	        		<i class="fa fa-mobile" aria-hidden="true" style="color:  #2F5F5F;font-size: 52px"></i>
+	        	</div>   	
+	        	<div class="col col-80" style="width: 50%">
+	        		<div >
+	        			 <strong>{{list.name}}</strong>
+	        		</div>
+	        		<div style="font-size: 12px;">
+	        			{{list.description | htmlToPlaintext}}
+	        		</div>
+	        		<div >
+	        			<!-- Creates at:<span style="font-weight: 800">26</span> min ago | Expires in 1 day -->
+	        			<strong>{{list.questions}} </strong><span> Questions</span>
+	        		</div>
+	        	</div>
+	        	<div class="col">
+	        		<i class="fa fa-chevron-circle-right" aria-hidden="true" style="color:  #2F5F5F;font-size: 20px"></i>
+	        	</div>
+	         </div>
+            
+          </div>
+      
+      
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+  </ion-content>
+<div ng-include="'templates/footer.html'">
+		
+</div>
+</ion-view>
+

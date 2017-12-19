@@ -1,0 +1,57 @@
+<ion-view view-title="{{page.title}}">
+	<ion-nav-bar class="bar-stable bar-positive">
+		<div style="float: right !important; padding-right: 3%; z-index: 99999 !important; position: absolute; right: 0;">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="right" style="color:#FFF !important; float: right; font-size: 30px;"></button>
+		</div>
+	</ion-nav-bar>
+
+    <!-- <ion-nav-bar class="bar-stable bar-positive">
+    	<div class="bar bar-header bar-positive" style="text-align: center;padding:0px 10px" layout="row" layout-align="space-between center">
+    		<h4 class="color-heading">List of All survey</h4>
+    	</div>
+    </ion-nav-bar>  -->
+    <div class="bar bar-subheader" style="background-color: #e8e8e8;">
+	 	<div style="width: 100%;text-align: center;line-height: 32px;overflow: hidden;text-overflow: ellipsis;">List of All survey</div>
+	</div>
+    <ion-content class="has-subheader">
+    <ng-include src="'templates/testmode.html'" ng-show="checkAppMode()" ng-controller="settingsCTRL"></ng-include>
+      <div >
+      
+          <div ng-repeat="list in surveyList" ng-click="startSurvey(list.survey_id)" style="border-bottom: 1px solid grey">
+            <!-- {{list.name}} -->
+            <div class="row" style="color:  #2F5F5F;"> 
+	           <!-- 	<div flex="70">
+	           		{{list.name}}
+	           	</div>
+	           	<div flex="30" style="font-size:12px;color:#8f8f8f">
+	           		{{list.created_at}}
+	           	</div>
+	           	<div flex="100" style="font-size:12px;margin-top:5px;color:#8f8f8f">
+	           		{{list.description | htmlToPlaintext}}
+	           	</div> -->
+	        	<div class="col" >
+	        		<i class="fa fa-mobile" aria-hidden="true" style="color:  #2F5F5F;font-size: 52px"></i>
+	        	</div>   	
+	        	<div class="col col-80" style="width: 50%">
+	        		<div >
+	        			 <strong>{{list.name}}</strong>
+	        		</div>
+	        		<div style="font-size: 12px;">
+	        			{{list.description | htmlToPlaintext}}
+	        		</div>
+	        		<div >
+	        			<!-- Creates at:<span style="font-weight: 800">26</span> min ago | Expires in 1 day -->
+	        			<strong>{{list.questions}} </strong><span> Questions</span>
+	        		</div>
+	        	</div>
+	        	<div class="col">
+	        		<i class="fa fa-chevron-circle-right" aria-hidden="true" style="color:  #2F5F5F;font-size: 20px"></i>
+	        	</div>
+	         </div>
+            
+          </div>
+      
+      
+      </div>
+    </ion-content>
+  </ion-view>
